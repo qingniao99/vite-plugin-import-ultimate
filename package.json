@@ -1,0 +1,23 @@
+{
+  "name": "vite-plugin-import-ultimate",
+  "version": "1.0.0",
+  "description": "按需导入插件 (带缓存优化)，风格极度类似babel-plugin-import",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qingniao99/vite-plugin-import-ultimate.git"
+  },
+  "keywords": [
+    "vite-plugin-import",
+    "babel-plugin-import"
+  ],
+  "author": "qingniao99",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qingniao99/vite-plugin-import-ultimate/issues"
+  },
+  "homepage": "https://github.com/qingniao99/vite-plugin-import-ultimate#readme"
+}
