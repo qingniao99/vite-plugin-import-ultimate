@@ -7,7 +7,7 @@
 ## 安装
 
 ```bash
-npm install vite-plugin-ultimate-import -D
+npm install vite-plugin-import-ultimate -D
 ```
 
 ## options
@@ -30,7 +30,7 @@ npm install vite-plugin-ultimate-import -D
 
 ```js
 // vite.config.js
-import ultimateImport from 'vite-plugin-ultimate-import'
+import ultimateImport from 'vite-plugin-import-ultimate'
 
 export default {
   plugins: [

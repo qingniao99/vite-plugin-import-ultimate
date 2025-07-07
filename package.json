@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-import-ultimate",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "按需导入插件 (带缓存优化)，风格极度类似babel-plugin-import",
   "main": "index.js",
   "scripts": {
