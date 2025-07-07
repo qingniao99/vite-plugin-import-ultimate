@@ -1,5 +1,6 @@
 import path from 'node:path'
 import crypto from 'node:crypto'
+import MagicString from 'magic-string'
 
 export default (options = {}) => {
   const cache = new Map()
@@ -29,7 +30,6 @@ export default (options = {}) => {
     enforce: 'pre',
 
     handleHotUpdate(ctx) {
-      // 删除所有以该文件路径开头的缓存项
       for (const key of cache.keys()) {
         if (key.startsWith(ctx.file + ':')) {
           cache.delete(key)
@@ -66,8 +66,10 @@ export default (options = {}) => {
         return null
       }
 
+      const s = new MagicString(code)
       let transformed = false
-      const result = code.replace(
+
+      s.replace(
         new RegExp(`import\\s*{([^}]+)}\\s*from\\s*(['"])${options.libraryName}\\2`, 'g'),
         (match, imports, quote) => {
           transformed = true
@@ -80,11 +82,10 @@ export default (options = {}) => {
                 ? options.customName(name, formattedName)
                 : path.posix.join(options.libraryName, options.libraryDirectory, formattedName)
 
-              // 样式处理
               let styleImport = ''
               if (options.style === 'css') {
                 styleImport = `\nimport '${componentPath}/style/css';`
-              } else if (options.style === true ) {
+              } else if (options.style === true) {
                 styleImport = `\nimport '${componentPath}/style';`
               }
 
@@ -95,6 +96,15 @@ export default (options = {}) => {
       )
 
       if (transformed) {
+        const result = {
+          code: s.toString(),
+          map: s.generateMap({
+            source: id,
+            includeContent: true,
+            hires: true
+          })
+        }
+
         cache.set(cacheKey, {
           result,
           timestamp: Date.now()
@@ -104,6 +114,7 @@ export default (options = {}) => {
         if (options.debug) {
           console.log(`[vite-plugin-ultimate-import] Transformed + Cached ${id}`)
           console.log(`  Cache size: ${cache.size}`)
+          console.log(`  Generated sourcemap for ${id}`)
         }
         return result
       }

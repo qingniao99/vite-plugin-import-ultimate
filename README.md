@@ -1,6 +1,6 @@
 ## vite-plugin-ultimate-import
 
-[![npm version](https://img.shields.io/npm/v/vite-plugin-ultimate-import)](https://www.npmjs.com/package/vite-plugin-ultimate-import)
+[![npm version](https://img.shields.io/npm/v/vite-plugin-import-ultimate)](https://www.npmjs.com/package/vite-plugin-import-ultimate)
 
 按需导入插件 (带缓存优化)，风格极度类似babel-plugin-import
 
