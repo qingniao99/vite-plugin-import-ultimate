@@ -4,6 +4,12 @@
 
 按需导入插件 (带缓存优化)，风格极度类似babel-plugin-import
 
+## 安装
+
+```bash
+npm install vite-plugin-ultimate-import -D
+```
+
 ## options
 
 ```js
